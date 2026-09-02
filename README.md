@@ -1,9 +1,8 @@
 # (Projekt neve)
 
 # Csapattagok
-- Név
-- Név
-- Név
+- Szabó Botond Nándor
+- Tóth Tamás Levente
 
 # Projekt leírása
 
@@ -11,5 +10,3 @@
 
 # Tervezett termékek
 - Weblap (backend + frontend) **kötelező**
-- Natív asztali alkalmazás (opcionális)
-- Natív mobilalkalmazás (opcionális)
