@@ -1,0 +1,53 @@
+{
+  "name": "users",
+  "version": "3.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cross-env NODE_ENV=production node .",
+    "dev": "cross-env NODE_ENV=dev nodemon .",
+
+    "db:create:production": "npx sequelize-cli db:create --env production",
+    "db:create:dev": "npx sequelize-cli db:create --env dev",
+    "db:create:test": "npx sequelize-cli db:create --env test",
+    "db:create": "npm run db:create:production & npm run db:create:dev & npm run db:create:test",
+
+    "db:reset:production": "npx sequelize-cli db:drop --env production",
+    "db:reset:dev": "npx sequelize-cli db:drop --env dev",
+    "db:reset:test": "npx sequelize-cli db:drop --env test",
+    "db:reset": "npm run db:reset:production & npm run db:reset:dev & npm run db:reset:test",
+
+    "db:migrate:production": "npx sequelize-cli db:migrate --env production",
+    "db:migrate:dev": "npx sequelize-cli db:migrate --env dev",
+    "db:migrate:test": "npx sequelize-cli db:migrate --env test",
+    "db:migrate": "npm run db:migrate:production & npm run db:migrate:dev & npm run db:migrate:test",
+
+    "db:seed:production": "npx sequelize-cli db:seed:all --env production",
+    "db:seed:dev": "npx sequelize-cli db:seed:all --env dev",
+    "db:seed:test": "npx sequelize-cli db:seed:all --env test",
+    "db:seed": "cross-env NODE_ENV=production npm run db:seed:production & cross-env NODE_ENV=dev npm run db:seed:dev & cross-env NODE_ENV=test npm run db:seed:test",
+
+    "db:setup:production": "npm run db:create:production & npm run db:migrate:production & npm run db:seed:production",
+    "db:setup:dev": "npm run db:create:dev & npm run db:migrate:dev & npm run db:seed:dev",
+    "db:setup:test": "npm run db:create:test & npm run db:migrate:test & npm run db:seed:test",
+    "db:setup": "npm run db:setup:production & npm run db:setup:dev & npm run db:setup:test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "cross-env": "^10.1.0",
+    "dotenv": "^18.0.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.24.5",
+    "sequelize": "^6.37.8"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14",
+    "sequelize-cli": "^6.6.5"
+  }
+}

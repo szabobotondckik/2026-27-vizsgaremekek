@@ -1,0 +1,45 @@
+Ki mennyi könyvet kölcsönzött ki
+SELECT users.name, COUNT(loans.loan_id) AS kolcenzesek_szama
+FROM users
+LEFT JOIN loans ON users.user_id = loans.user_id
+GROUP BY users.user_id, users.name;
+
+
+
+Emailre való keresés
+SELECT *
+FROM users
+WHERE email = 'bratyesz@gmail.com';
+
+
+Megszámolja mennyi aktív kölcsönzés van és kiírja a könyv címét mellé
+SELECT books.title, COUNT(loans.loan_id) AS kolcenzesek_szama
+FROM books
+LEFT JOIN loans ON books.book_id = loans.book_id
+GROUP BY books.book_id, books.title
+ORDER BY kolcenzesek_szama DESC;
+
+
+Megszámolja mennyi kikölcsönzött könyv van
+SELECT COUNT(*) AS aktiv_kolcsonzesek
+FROM loans
+WHERE loans.status = "unavailable";
+
+
+Összes aktívan kikölcsönzött könyvet listázza
+SELECT books.title
+FROM loans, books
+WHERE loans.status = "unavailable";
+
+
+Összes felhasználót listázza
+SELECT user_id, name, email, created_at
+FROM users
+ORDER BY name ASC;
+
+
+Ki kölcsönözte ki a könyvet mikor és melyiket
+SELECT users.name, books.title, loans.loan_date
+FROM loans
+JOIN users ON loans.user_id = users.user_id
+JOIN books ON loans.book_id = books.book_id
